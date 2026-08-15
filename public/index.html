@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>ShopEasy - E-Commerce</title>
+
+  <link
+    rel="stylesheet"
+    href="style.css"
+  >
+
+</head>
+
+<body>
+
+<header>
+
+  <h1>ShopEasy</h1>
+
+  <nav>
+
+    <button onclick="showSection('shop')">
+      Shop
+    </button>
+
+    <button onclick="showSection('cart')">
+      Cart (<span id="cartCount">0</span>)
+    </button>
+
+    <button onclick="showSection('orders')">
+      My Orders
+    </button>
+
+    <button
+      id="adminNav"
+      onclick="showSection('admin')"
+      class="hidden"
+    >
+      Admin
+    </button>
+
+    <button
+      id="loginNav"
+      onclick="showSection('login')"
+    >
+      Login
+    </button>
+
+    <button
+      id="logoutBtn"
+      onclick="logout()"
+      class="hidden"
+    >
+      Logout
+    </button>
+
+  </nav>
+
+</header>
+
+<main>
+
+<section
+  id="shop"
+  class="section"
+>
+
+  <div class="hero">
+
+    <h2>
+      Simple. Fast. Online Shopping.
+    </h2>
+
+    <p>
+      Browse products, add them to your cart
+      and place an order.
+    </p>
+
+  </div>
+
+  <div
+    id="products"
+    class="grid"
+  ></div>
+
+</section>
+
+
+<section
+  id="login"
+  class="section hidden"
+>
+
+  <div class="card form-card">
+
+    <h2>Login</h2>
+
+    <form id="loginForm">
+
+      <input
+        id="loginEmail"
+        type="email"
+        placeholder="Email"
+        required
+      >
+
+      <input
+        id="loginPassword"
+        type="password"
+        placeholder="Password"
+        required
+      >
+
+      <button type="submit">
+        Login
+      </button>
+
+    </form>
+
+    <p>
+      New user?
+      <a
+        href="#"
+        onclick="showRegister()"
+      >
+        Create account
+      </a>
+    </p>
+
+    <p class="hint">
+      User:
+      user@example.com / user123
+    </p>
+
+    <p class="hint">
+      Admin:
+      admin@example.com / admin123
+    </p>
+
+  </div>
+
+</section>
+
+
+<section
+  id="register"
+  class="section hidden"
+>
+
+  <div class="card form-card">
+
+    <h2>Create Account</h2>
+
+    <form id="registerForm">
+
+      <input
+        id="regName"
+        placeholder="Full name"
+        required
+      >
+
+      <input
+        id="regEmail"
+        type="email"
+        placeholder="Email"
+        required
+      >
+
+      <input
+        id="regPassword"
+        type="password"
+        placeholder="Password"
+        minlength="6"
+        required
+      >
+
+      <button type="submit">
+        Register
+      </button>
+
+    </form>
+
+  </div>
+
+</section>
+
+
+<section
+  id="cart"
+  class="section hidden"
+>
+
+  <h2>Shopping Cart</h2>
+
+  <div id="cartItems"></div>
+
+  <div id="cartTotal"></div>
+
+  <div
+    id="checkoutBox"
+    class="card hidden"
+  >
+
+    <h3>Checkout</h3>
+
+    <textarea
+      id="shippingAddress"
+      placeholder="Enter shipping address"
+      required
+    ></textarea>
+
+    <button onclick="checkout()">
+      Place Order
+    </button>
+
+  </div>
+
+</section>
+
+
+<section
+  id="orders"
+  class="section hidden"
+>
+
+  <h2>My Orders</h2>
+
+  <div id="ordersList"></div>
+
+</section>
+
+
+<section
+  id="admin"
+  class="section hidden"
+>
+
+  <h2>Admin Dashboard</h2>
+
+  <div class="card">
+
+    <h3>Add Product</h3>
+
+    <form
+      id="productForm"
+      class="admin-form"
+    >
+
+      <input
+        id="pName"
+        placeholder="Product name"
+        required
+      >
+
+      <input
+        id="pPrice"
+        type="number"
+        placeholder="Price"
+        required
+      >
+
+      <input
+        id="pStock"
+        type="number"
+        placeholder="Stock"
+        required
+      >
+
+      <input
+        id="pCategory"
+        placeholder="Category"
+        required
+      >
+
+      <input
+        id="pImage"
+        placeholder="Image URL"
+      >
+
+      <input
+        id="pDescription"
+        placeholder="Description"
+        required
+      >
+
+      <button type="submit">
+        Add Product
+      </button>
+
+    </form>
+
+  </div>
+
+  <div id="adminProducts"></div>
+
+  <h3>All Orders</h3>
+
+  <div id="adminOrders"></div>
+
+</section>
+
+</main>
+
+<footer>
+
+  ShopEasy © 2026 |
+  Full-Stack E-Commerce Project
+
+</footer>
+
+<script src="app.js"></script>
+
+</body>
+
+</html>
